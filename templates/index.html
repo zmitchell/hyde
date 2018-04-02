@@ -10,10 +10,7 @@
       <title>{% block title %}{{ config.title }}{% endblock title %}</title>
 
       <!-- CSS -->
-      <link rel="stylesheet" href="{{ get_url(path="print.css", trailing_slash=false) }}" media="print">
-      <link rel="stylesheet" href="{{ get_url(path="poole.css", trailing_slash=false) }}">
       <link rel="stylesheet" href="{{ get_url(path="hyde.css", trailing_slash=false) }}">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
       {% if config.generate_rss %}
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
@@ -47,23 +44,25 @@
             </div>
         {% endblock sidebar %}
 
-        <div class="content container">
+        <main class="content container">
             {% block content %}
                 <div class="posts">
                     {% for page in section.pages %}
+                    {% if not page.extra.hidden %}
                       <div class="post">
                         <h1 class="post-title">
                           <a href="{{ page.permalink }}">
                             {{ page.title }}
                           </a>
                         </h1>
-
-                        <span class="post-date">{{ page.date | date(format="%Y-%m-%d") }}</span>
+                        <!-- <p>{{ page.summary }}</p> -->
+                        {{ page.description | markdown }}
                       </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             {% endblock content %}
-        </div>
+        </main>
 
     </body>
 
