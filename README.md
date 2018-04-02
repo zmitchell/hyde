@@ -1,6 +1,8 @@
 # Hyde
 This is my fork of the [Hyde](https://github.com/Keats/hyde) theme for the [Gutenberg](getgutenberg.io) static site generator. I've made a few style tweaks here and there and optimized for page size (my homepage weighs in at ~4kB).
 
+![Tinkering.xyz homepage](screenshot.png)
+
 Here are the tweaks I've made:
 
 * Theming is more consistent.
